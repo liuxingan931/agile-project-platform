@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.agile.module_b.mapper.SprintMapper">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO sprint(sprint_name, goal, start_time, end_time, status, project_id, create_time)
+        VALUES(#{sprintName}, #{goal}, #{startTime}, #{endTime}, #{status}, #{projectId}, #{createTime})
+    </insert>
+    <select id="selectById" resultType="com.agile.module_b.entity.Sprint">
+        SELECT * FROM sprint WHERE id = #{id}
+    </select>
+    <select id="selectByProjectId" resultType="com.agile.module_b.entity.Sprint">
+        SELECT * FROM sprint WHERE project_id = #{projectId}
+    </select>
+    <update id="update">
+        UPDATE sprint SET sprint_name=#{sprintName}, goal=#{goal}, start_time=#{startTime},
+        end_time=#{endTime}, status=#{status} WHERE id=#{id}
+    </update>
+    <delete id="deleteById">
+        DELETE FROM sprint WHERE id = #{id}
+    </delete>
+</mapper>

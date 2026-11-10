@@ -1,0 +1,31 @@
+# Java
+target/
+*.class
+*.jar
+*.war
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+
+# Node
+node_modules/
+dist/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env & secrets
+.env
+*.local
+
+# 数据库配置文件中的真实密码不要提交（改用环境变量）
+application-local.yml
