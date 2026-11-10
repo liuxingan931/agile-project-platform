@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- ========== 基础编码与视口 ========== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- ========== 页面标题与 SEO 信息 ========== -->
+  <title>敏捷研发项目管理平台</title>
+  <meta name="description" content="基于 Vue3 + ElementPlus + SpringBoot 的敏捷研发项目管理平台，支持迭代 Sprint 管理、用户故事 Backlog 与燃尽图报表。" />
+  <meta name="keywords" content="敏捷开发, Scrum, 迭代管理, 用户故事, Backlog, 燃尽图, 项目管理" />
+  <meta name="author" content="软件工程实验小组" />
+  <meta name="theme-color" content="#2c3e50" />
+
+  <!-- ========== 站点图标（如有 favicon 可取消注释） ========== -->
+  <!-- <link rel="icon" href="/favicon.ico" /> -->
+
+  <!-- ========== 全局基础样式 ========== -->
+  <!-- 作用：消除浏览器默认边距、让应用铺满视口、提供首屏加载提示 -->
+  <style>
+    /* 重置默认边距，统一盒模型 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 让根元素与挂载点铺满整个视口 */
+    html,
+    body,
+    #app {
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    /* 全局字体与背景，避免首屏出现白屏闪烁 */
+    body {
+      font-family: "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-color: #f5f7fa;
+      color: #303133;
+    }
+
+    /* 首屏加载提示：Vue 应用挂载完成后会被自动替换 */
+    .app-loading {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #2c3e50;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    /* 加载旋转图标 */
+    .app-loading-spinner {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 16px;
+      border: 3px solid #dcdfe6;
+      border-top-color: #409eff;
+      border-radius: 50%;
+      animation: app-loading-rotate 0.8s linear infinite;
+    }
+
+    @keyframes app-loading-rotate {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ========== Vue3 应用挂载点 ========== -->
+  <!-- main.js 中通过 createApp(App).mount('#app') 将应用渲染到这里 -->
+  <div id="app">
+    <!-- 应用加载完成前的占位提示，挂载后会被 Vue 组件替换 -->
+    <div class="app-loading">
+      <div class="app-loading-spinner"></div>
+      <span>正在加载 敏捷研发项目管理平台 ...</span>
+    </div>
+  </div>
+
+  <!-- ========== Vite 模块化入口 ========== -->
+  <!-- type="module" 让浏览器以 ES Module 方式加载 src/main.js -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

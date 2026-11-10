@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.agile.module_e.mapper.TaskMapper">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO task(title, description, status, story_id, sprint_id, assignee, estimate_hours, create_time)
+        VALUES(#{title}, #{description}, #{status}, #{storyId}, #{sprintId}, #{assignee}, #{estimateHours}, #{createTime})
+    </insert>
+
+    <select id="selectById" resultType="com.agile.module_e.entity.Task">
+        SELECT * FROM task WHERE id = #{id}
+    </select>
+
+    <select id="selectAll" resultType="com.agile.module_e.entity.Task">
+        SELECT * FROM task ORDER BY id DESC
+    </select>
+
+    <select id="selectBySprintId" resultType="com.agile.module_e.entity.Task">
+        SELECT * FROM task WHERE sprint_id = #{sprintId} ORDER BY id DESC
+    </select>
+
+    <select id="selectByStoryId" resultType="com.agile.module_e.entity.Task">
+        SELECT * FROM task WHERE story_id = #{storyId} ORDER BY id DESC
+    </select>
+
+    <update id="update">
+        UPDATE task SET title=#{title}, description=#{description}, status=#{status},
+        story_id=#{storyId}, sprint_id=#{sprintId}, assignee=#{assignee}, estimate_hours=#{estimateHours}
+        WHERE id=#{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM task WHERE id = #{id}
+    </delete>
+</mapper>

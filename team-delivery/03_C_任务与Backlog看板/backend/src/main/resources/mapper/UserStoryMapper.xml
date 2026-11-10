@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.agile.module_c.mapper.UserStoryMapper">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user_story(content, priority, estimate_point, status, sprint_id, assignee_id, create_time)
+        VALUES(#{content}, #{priority}, #{estimatePoint}, #{status}, #{sprintId}, #{assigneeId}, #{createTime})
+    </insert>
+    <select id="selectById" resultType="com.agile.module_c.entity.UserStory">
+        SELECT * FROM user_story WHERE id = #{id}
+    </select>
+    <select id="selectBySprintId" resultType="com.agile.module_c.entity.UserStory">
+        SELECT * FROM user_story WHERE sprint_id = #{sprintId}
+    </select>
+    <update id="update">
+        UPDATE user_story SET content=#{content}, priority=#{priority}, estimate_point=#{estimatePoint},
+        status=#{status}, sprint_id=#{sprintId}, assignee_id=#{assigneeId} WHERE id=#{id}
+    </update>
+    <delete id="deleteById">
+        DELETE FROM user_story WHERE id = #{id}
+    </delete>
+</mapper>

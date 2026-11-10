@@ -1,0 +1,30 @@
+@startuml
+title 敏捷研发项目管理平台 部署图（系统拓扑）
+
+node "用户端浏览器" as Client {
+  component "Vue3 + Element Plus 前端\nhttp://localhost:5173" as FE
+}
+
+node "应用服务器（本机）" as AppServer {
+  component "SpringBoot 后端\n内置 Tomcat :8080\nController-Service-Mapper" as BE
+}
+
+database "MySQL 8.0\n数据库 agile_db\n(project/sprint/user_story/task)" as DB
+
+cloud "外部代码托管平台" as Cloud {
+  component "GitHub REST API\napi.github.com" as GH
+  component "Gitee REST API\ngitee.com/api/v5" as GT
+}
+
+Client --> AppServer : HTTP / REST (JSON)\n前后端分离
+BE --> DB : JDBC / MyBatis
+BE --> GH : HTTPS (RestTemplate)
+BE --> GT : HTTPS (RestTemplate)
+
+note right of BE
+  集成边界：
+  module_d 的 GitHubAdapter
+  统一封装外部仓库访问
+  auto 模式 GitHub 失败自动切 Gitee
+end note
+@enduml
